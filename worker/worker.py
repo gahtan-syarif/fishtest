@@ -496,10 +496,10 @@ def setup_fastchess(worker_dir, compiler, concurrency, global_cache):
         os.chdir(tmp_dir / prefix)
 
         cmds = [
-            f"make -j{concurrency} tests CXX={compiler} GIT_SHA={fastchess_sha[0:8]} GIT_DATE=01010101",
+            f"make -j{concurrency} tests CXX={compiler} GIT_SHA={fastchess_sha[0:8]} GIT_DATE=01010101 -static",
             str(tmp_dir / prefix / ("fast-chess-tests" + EXE_SUFFIX)),
             "make clean",
-            f"make -j{concurrency} USE_CUTE=true CXX={compiler} GIT_SHA={fastchess_sha[0:8]} GIT_DATE=01010101",
+            f"make -j{concurrency} USE_CUTE=true CXX={compiler} GIT_SHA={fastchess_sha[0:8]} GIT_DATE=01010101 -static",
         ]
 
         for cmd in cmds:
